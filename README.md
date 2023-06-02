@@ -1,6 +1,6 @@
 # information
 
-> A game engine built using the VulkanSDK.
+> A game engine library built using the VulkanSDK.
 
 # setting
 
