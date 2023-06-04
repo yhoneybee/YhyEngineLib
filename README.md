@@ -13,6 +13,7 @@
 
 ### include setting
 * `.vscode/tasks.json/tasks/args`
+    * `"E:/VulkanSDK/<Vulkan Version>/Include"`
     * `"E:/Libraries/glm"`
     * `"E:/Libraries/glfw-<glfw Version>.bin.WIN64/include"`
 
@@ -27,6 +28,7 @@
 
 ### include setting
 * `C/C++/General/Additional Include Directories`
+    * `E:/VulkanSDK/<Vulkan Version>/Include`
     * `E:/Libraries/glm`
     * `E:/Libraries/glfw-<glfw Version>.bin.WIN64/include`
 
