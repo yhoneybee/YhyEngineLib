@@ -1,12 +1,21 @@
-#include <iostream>
 #include <future>
-#include <GLFW/glfw3.h>
+#include <iostream>
+
+#include "window\window.hpp"
 
 using namespace std;
 
-int main()
-{
-    
+constexpr auto nl = '\n';
+
+int main() {
+    yhy::window win{ "first vulkan window", 800, 600 };
+
+    yhy::window temp{ std::move(win) };
+
+    while (win.running()) {}
+
+    wcout << L"invalid: win" << nl;
+    while (temp.running()) {}
 
     return 0;
 }

@@ -1,0 +1,36 @@
+---
+BasedOnStyle: Google
+AlignTrailingComments: 'true'
+AllowAllConstructorInitializersOnNextLine: 'true'
+AllowShortBlocksOnASingleLine: 'true'
+AllowShortCaseLabelsOnASingleLine: 'true'
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortLambdasOnASingleLine: All
+AlwaysBreakTemplateDeclarations: 'Yes'
+ColumnLimit: '150'
+CompactNamespaces: 'false'
+Cpp11BracedListStyle: 'false'
+FixNamespaceComments: 'true'
+IndentWidth: '4'
+KeepEmptyLinesAtTheStartOfBlocks: 'false'
+Language: Cpp
+NamespaceIndentation: None
+PointerAlignment: Left
+SortUsingDeclarations: 'true'
+SpaceAfterCStyleCast: 'true'
+SpaceAfterLogicalNot: 'false'
+SpaceAfterTemplateKeyword: 'false'
+SpaceBeforeAssignmentOperators: 'true'
+SpaceBeforeCpp11BracedList: 'false'
+SpaceBeforeCtorInitializerColon: 'true'
+SpaceBeforeInheritanceColon: 'true'
+SpaceBeforeRangeBasedForLoopColon: 'true'
+SpaceInEmptyParentheses: 'false'
+SpacesInAngles: 'false'
+SpacesInCStyleCastParentheses: 'false'
+SpacesInContainerLiterals: 'true'
+SpacesInParentheses: 'false'
+SpacesInSquareBrackets: 'false'
+TabWidth: '4'
+
+...
