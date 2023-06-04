@@ -17,4 +17,6 @@
     name(name&&);          \
     name& operator=(name&&);
 
+#define YHY_EXPORT __attribute__((__visibility__("default")))
+
 #include <stdint.h>

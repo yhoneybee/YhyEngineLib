@@ -1,37 +1,37 @@
 #define GLFW_INCLUDE_VULKAN
 
-#include "window/window.hpp"
+#include "window.hpp"
 
 #include <GLFW/glfw3.h>
 
 BEGIN_NAMESPACE(yhy)
 
-window::window(std::string_view name, uint32_t width, uint32_t heigth) : name_{ name }, width_{ width }, height_{ heigth } {
+Window::Window(std::string_view name, uint32_t width, uint32_t heigth) : name_{ name }, width_{ width }, height_{ heigth } {
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
     window_ = glfwCreateWindow(width_, height_, name_.c_str(), nullptr, nullptr);
 }
-window::window(window&& rhs) : name_{ rhs.name_ }, width_{ rhs.width_ }, height_{ rhs.height_ } {
+Window::Window(Window&& rhs) : name_{ rhs.name_ }, width_{ rhs.width_ }, height_{ rhs.height_ } {
     window_ = rhs.window_;
     rhs.window_ = nullptr;
 }
-window::~window() {
-    if (!valid()) return;
+Window::~Window() {
+    if (!Valid()) return;
     glfwDestroyWindow(window_);
     glfwTerminate();
 }
-window& window::operator=(window&& rhs) {
+Window& Window::operator=(Window&& rhs) {
     window_ = rhs.window_;
     rhs.window_ = nullptr;
     return *this;
 }
-bool window::running() {
+bool Window::Running() {
     glfwPollEvents();
-    return valid() && !glfwWindowShouldClose(window_);
+    return Valid() && !glfwWindowShouldClose(window_);
 }
-bool window::valid() {
+bool Window::Valid() {
     return window_;
 }
 
