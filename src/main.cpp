@@ -10,7 +10,7 @@ using namespace std;
 constexpr auto nl = '\n';
 
 int main() {
-    yhy::Window window{ "first vulkan app", 800, 600 };
+    yhy::Window window{ L"first vulkan app", 800, 600 };
 
     while (window.Running()) {}
 
