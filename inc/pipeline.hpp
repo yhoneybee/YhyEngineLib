@@ -9,10 +9,10 @@ BEGIN_NAMESPACE(yhy)
 
 class Pipeline {
    public:
-    Pipeline(std::string_view vert_filepath, std::string_view frag_filepath);
+    Pipeline(std::wstring_view vert_filepath, std::wstring_view frag_filepath);
 
    private:
-    void CreateGraphicsPipeline_(std::string_view vert_filepath, std::string_view frag_filepath);
+    void CreateGraphicsPipeline_(std::wstring_view vert_filepath, std::wstring_view frag_filepath);
 };
 
 END_NAMESPACE
