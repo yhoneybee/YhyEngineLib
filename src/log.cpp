@@ -1,6 +1,7 @@
 #include "log.hpp"
 
 #include <filesystem>
+#include <format>
 
 #include "file.hpp"
 
@@ -10,13 +11,17 @@ uint32_t Log::depth_ = 0;
 std::filesystem::path Log::logFolder;
 
 Log::Trace::Trace(std::wstring_view functionName) : functionName_{ functionName } {
+    BeginTraceLog_(functionName_);
     Log::depth_++;
-    BeginTraceLog(functionName_);
 }
 
 Log::Trace::~Trace() {
-    EndTraceLog(functionName_);
     Log::depth_--;
+    EndTraceLog_(functionName_);
+}
+
+Log::Trace Log::CreateTrace(std::wstring_view functionName) {
+    return Trace{ functionName };
 }
 
 void Log::SetLogFolder(std::wstring_view path) {
@@ -24,24 +29,29 @@ void Log::SetLogFolder(std::wstring_view path) {
     logFolder = path;
 }
 
-void Log::TimeLog(std::wstring_view contents) {
-    TabToDepths();
+void Log::InsertLog(std::wstring_view contents, LogType logType) {
+    std::wstring logTypeString;
+    switch (logType) {
+    case LogType::Info: logTypeString = L"INFO"; break;
+    case LogType::Warning: logTypeString = L"WARNING"; break;
+    case LogType::Error: logTypeString = L"ERROR"; break;
+    }
+    File::Write(std::format(LR"({0}\{1}.yhylog)", logFolder.c_str(), L"TempDate"),
+                std::format(L"[{0} {1}] {2}{3}\n", L"TempTime", logTypeString, AddToDepths_(), contents));
 }
 
-void Log::ErrorLog(std::wstring_view contents, ErrorLevel errorLevel) {
-    TabToDepths();
+std::wstring Log::AddToDepths_() {
+    std::wstring adds;
+    for (size_t i = 0; i < depth_; i++) { adds += L"|  "; }
+    return adds;
 }
 
-void Log::TabToDepths() {}
-
-void Log::BeginTraceLog(std::wstring_view functionName) {
-    TabToDepths();
+void Log::BeginTraceLog_(std::wstring_view functionName) {
+    InsertLog(std::format(L"{0}", functionName));
 }
 
-void Log::EndTraceLog(std::wstring_view functionName) {
-    TabToDepths();
+void Log::EndTraceLog_(std::wstring_view functionName) {
+    InsertLog(std::format(L"{0}", functionName));
 }
-
-void Log::AppendLog(std::wstring_view contents, bool newLine) {}
 
 END_NAMESPACE

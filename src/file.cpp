@@ -8,7 +8,7 @@ BEGIN_NAMESPACE(yhy)
 
 File::Bytes File::Read(const std::filesystem::path& filePath) {
     std::ifstream reader{ filePath, std::ios::ate | std::ios::binary };
-    if (!reader) { Log::ErrorLog(L"open file failed!"); }
+    if (!reader) { Log::InsertLog(L"Failed to open file"); }
 
     auto file_size = static_cast<size_t>(reader.tellg());
     Bytes buffer;
@@ -21,10 +21,10 @@ File::Bytes File::Read(const std::filesystem::path& filePath) {
     return buffer;
 }
 
-void File::Write(const std::filesystem::path& filePath, std::string_view contents) {
-    if (!std::filesystem::exists(filePath)) { Log::ErrorLog(L"not exists path!"); }
-    std::ofstream writer{ filePath, std::ios::app };
-    if (!writer) { Log::ErrorLog(L"open file failed!"); }
+void File::Write(const std::filesystem::path& filePath, std::wstring_view contents) {
+    if (!std::filesystem::exists(filePath)) { Log::InsertLog(L"File does not exist in the path"); }
+    std::wofstream writer{ filePath, std::ios::app };
+    if (!writer) { Log::InsertLog(L"Failed to open file"); }
     writer << contents;
 }
 

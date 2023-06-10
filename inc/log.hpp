@@ -1,5 +1,5 @@
 #pragma once
-#define TRACE(functionName)
+#define TRACE(functionName) auto TRACE_FUNCTION_LOG = yhy::Log::CreateTrace(L## #functionName);
 
 #include <filesystem>
 #include <string>
@@ -19,22 +19,15 @@ class Log {
     };
 
    public:
-    enum ErrorLevel { Low, Middle, High };
+    enum LogType { Info, Warning, Error };
+    static Trace CreateTrace(std::wstring_view functionName);
     static void SetLogFolder(std::wstring_view path);
-    /// @brief 로그 기록: [hh:mm:ss:mm] \a contents
-    /// @param contents
-    static void TimeLog(std::wstring_view contents);
-    /// @brief 로그 기록: \a errorLevel Error! \a contents
-    /// @param contents
-    /// @param errorLevel
-    static void ErrorLog(std::wstring_view contents, ErrorLevel errorLevel = ErrorLevel::Low);
+    static void InsertLog(std::wstring_view contents, LogType logType = LogType::Info);
 
    private:
-    /// @brief 깊이 만큼 tab하는 함수
-    static void TabToDepths();
-    static void BeginTraceLog(std::wstring_view functionName);
-    static void EndTraceLog(std::wstring_view functionName);
-    static void AppendLog(std::wstring_view contents, bool newLine = false);
+    static std::wstring AddToDepths_();
+    static void BeginTraceLog_(std::wstring_view functionName);
+    static void EndTraceLog_(std::wstring_view functionName);
 
     static std::filesystem::path logFolder;
     static uint32_t depth_;

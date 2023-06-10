@@ -13,7 +13,7 @@ class File {
 
    public:
     static Bytes Read(const std::filesystem::path& filePath);
-    static void Write(const std::filesystem::path& filePath, std::string_view contents);
+    static void Write(const std::filesystem::path& filePath, std::wstring_view contents);
 
    private:
 };
