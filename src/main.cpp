@@ -11,7 +11,7 @@ using namespace std;
 constexpr auto nl = '\n';
 
 int main() {
-    yhy::Log::SetLogFolder(LR"(C:\YhyEngineLogs)");
+    yhy::Log::SetLogFolder(LR"(E:\YhyEngineLogs)");
 
     TRACE(main);
 

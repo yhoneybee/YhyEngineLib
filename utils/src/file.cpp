@@ -22,7 +22,6 @@ File::Bytes File::Read(const std::filesystem::path& filePath) {
 }
 
 void File::Write(const std::filesystem::path& filePath, std::wstring_view contents) {
-    if (!std::filesystem::exists(filePath)) { Log::InsertLog(L"File does not exist in the path"); }
     std::wofstream writer{ filePath, std::ios::app };
     if (!writer) { Log::InsertLog(L"Failed to open file"); }
     writer << contents;

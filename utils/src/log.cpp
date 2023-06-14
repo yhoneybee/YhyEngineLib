@@ -36,6 +36,7 @@ void Log::InsertLog(std::wstring_view contents, LogType logType) {
     case LogType::Warning: logTypeString = L"WARNING"; break;
     case LogType::Error: logTypeString = L"ERROR"; break;
     }
+
     File::Write(std::format(LR"({0}\{1}.yhylog)", logFolder.c_str(), L"TempDate"),
                 std::format(L"[{0} {1}] {2}{3}\n", L"TempTime", logTypeString, AddToDepths_(), contents));
 }
