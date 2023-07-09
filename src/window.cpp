@@ -4,16 +4,14 @@
 
 #include <GLFW/glfw3.h>
 
-#include "encoder.hpp"
-
 BEGIN_NAMESPACE(yhy)
 
-Window::Window(std::wstring_view name, uint32_t width, uint32_t heigth) : name_{ name }, width_{ width }, height_{ heigth } {
+Window::Window(std::string_view name, uint32_t width, uint32_t heigth) : name_{ name }, width_{ width }, height_{ heigth } {
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
-    window_ = glfwCreateWindow(width_, height_, Encoder::UnicodeToAscii(name).c_str(), nullptr, nullptr);
+    window_ = glfwCreateWindow(width_, height_, "Test Window", nullptr, nullptr);
 }
 Window::Window(Window&& rhs) : name_{ rhs.name_ }, width_{ rhs.width_ }, height_{ rhs.height_ } {
     window_ = rhs.window_;

@@ -11,7 +11,7 @@ using namespace std;
 constexpr auto nl = '\n';
 
 int main() {
-    yhy::Log::SetLogFolder(LR"(E:\YhyEngineLogs)");
+    yhy::Log::SetLogFolder(R"(E:\YhyEngineLogs)");
 
     TRACE(main);
 
@@ -23,9 +23,9 @@ int main() {
         }
     }
 
-    // yhy::Window window{ L"first vulkan app", 800, 600 };
+    yhy::Window window{ "first vulkan app", 800, 600 };
 
-    // while (window.Running()) {}
+    while (window.Running()) {}
 
     return 0;
 }

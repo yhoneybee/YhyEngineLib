@@ -10,7 +10,7 @@ BEGIN_NAMESPACE(yhy)
 
 class Window {
    public:
-    Window(std::wstring_view name, uint32_t width, uint32_t heigth);
+    Window(std::string_view name, uint32_t width, uint32_t heigth);
     virtual ~Window();
 
     DENIED_COPY(Window)
@@ -21,7 +21,7 @@ class Window {
 
    private:
     GLFWwindow* window_;
-    std::wstring name_;
+    std::string name_;
     const uint32_t width_;
     const uint32_t height_;
 };
